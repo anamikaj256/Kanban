@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Kanban Board — Refactor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 16px; }
+    .board { display: flex; gap: 1rem; margin-top: 20px; }
+    .column { flex: 1; background: #fff; padding: 10px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .column h2 { margin-top: 0; font-size: 1.1rem; }
+    .task { background: #e3e3ff; margin: 8px 0; padding: 8px; border-radius: 6px; cursor: grab; display:flex; align-items:center; gap:8px; justify-content:space-between; }
+    .task.dragging { opacity: 0.5; }
+    .dropzone { min-height: 60px; padding: 6px; border: 1px dashed #ccc; border-radius: 4px; }
+    .task .left { display:flex; gap:8px; align-items:center; }
+    .priority-badge { padding: 2px 6px; border-radius: 999px; font-size: 0.75rem; background: rgba(0,0,0,0.08); }
+    .priority-High { background: #ffdddd; }
+    .priority-Medium { background: #fff4cc; }
+    .priority-Low { background: #ddffdd; }
+    button { margin-left: 6px; cursor:pointer; }
+    form { display:flex; gap:8px; align-items:center; }
+    input, select { padding:6px; border-radius:4px; border:1px solid #ccc; }
+  </style>
+</head>
+<body>
+  <h1>Kanban Board (Refactor)</h1>
+
+  <form id="taskForm">
+    <input id="taskTitle" placeholder="Task title..." required />
+    <select id="taskPriority" aria-label="Priority">
+      <option value="High">High</option>
+      <option value="Medium" selected>Medium</option>
+      <option value="Low">Low</option>
+    </select>
+    <button type="submit">Add</button>
+  </form>
+
+  <div class="board">
+    <div class="column" data-status="todo">
+      <h2>To Do</h2>
+      <div class="dropzone" id="todo"></div>
+    </div>
+    <div class="column" data-status="inprogress">
+      <h2>In Progress</h2>
+      <div class="dropzone" id="inprogress"></div>
+    </div>
+    <div class="column" data-status="done">
+      <h2>Done</h2>
+      <div class="dropzone" id="done"></div>
+    </div>
+  </div>
+
+ 
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
